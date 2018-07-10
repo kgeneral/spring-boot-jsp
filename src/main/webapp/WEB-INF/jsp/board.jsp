@@ -6,6 +6,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Board</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/static/image/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/board.css" />
+    <script src="/static/js/board.js"></script>
 </head>
 <body>
 
