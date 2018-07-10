@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.BoardDao">
+
+    <parameterMap id="boardDto" type="com.example.demo.domain.Board">
+        <parameter property="title" javaType="java.lang.String"/>
+        <parameter property="content" javaType="java.lang.String"/>
+        <parameter property="userName" javaType="java.lang.String"/>
+    </parameterMap>
+
+    <resultMap id="board" type="com.example.demo.domain.Board">
+        <result property="id" column="id" />
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="userName" column="user_name"/>
+    </resultMap>
+
+    <select id="selectBoard" resultMap="board">
+        SELECT id, title, content, user_name FROM board
+    </select>
+
+    <select id="select" parameterMap="boardDto" resultMap="board">
+        SELECT id, title, content, user_name FROM board
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterMap="boardDto">
+        INSERT INTO board (title, content, user_name)
+        VALUES (#{title},#{content},#{userName})
+    </insert>
+
+    <update id="update" parameterMap="boardDto">
+        UPDATE board
+        SET title = #{title},
+            content = #{content},
+            user_name = #{userName}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterMap="boardDto">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
+</mapper>
